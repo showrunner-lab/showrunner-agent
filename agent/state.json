@@ -1,0 +1,24 @@
+{
+  "_comment": "Written by the Showrunner at the end of every routine, in the same commit as its output. Dates are YYYY-MM-DD in the Operator's time zone.",
+  "phase": "pre-ideation",
+  "constitutionSigned": false,
+  "canonVersion": "0.0.0",
+  "currentArc": null,
+  "episodesPublished": 0,
+  "bufferCount": 0,
+  "lastRun": {
+    "R0": null,
+    "R1": null,
+    "R2": null,
+    "R3": null,
+    "R4": null,
+    "R5": null,
+    "driftAudit": null
+  },
+  "radar": {
+    "date": null,
+    "picks": []
+  },
+  "pending": [],
+  "lastIncident": null
+}

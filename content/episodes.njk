@@ -1,0 +1,21 @@
+---
+layout: base.njk
+title: Episodes
+permalink: /episodes/
+---
+<h1>Episodes</h1>
+<p class="lede">Every piece of content published by the character, with links to where it lives.</p>
+{% set eps = collections.episode | newestFirst %}
+{% if eps.length %}
+<ul class="list">
+  {% for e in eps %}
+    <li>
+      <time>{{ e.date | isoDate }}</time>
+      {% if e.data.arc %}<span class="tag">{{ e.data.arc }}</span>{% endif %}
+      <a href="{{ e.url | url }}">{{ e.data.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="muted">No episodes yet.</p>
+{% endif %}

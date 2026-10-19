@@ -1,0 +1,47 @@
+---
+layout: base.njk
+title: Coin
+permalink: /coin/
+---
+<h1>Coin</h1>
+
+{% if coin.status == "launched" %}
+<section class="card">
+  <p class="kicker">The one official coin</p>
+  <h2>${{ coin.ticker }}</h2>
+  <dl class="facts">
+    <dt>Chain</dt><dd>{{ coin.chain }}</dd>
+    <dt>Contract</dt><dd><code id="ca">{{ coin.contractAddress }}</code></dd>
+    <dt>Launchpad</dt><dd>{% if coin.launchPageUrl %}<a href="{{ coin.launchPageUrl }}" rel="noopener">{{ coin.launchpad }}</a>{% else %}{{ coin.launchpad }}{% endif %}</dd>
+    <dt>Launched</dt><dd>{{ coin.launchedAt }}</dd>
+  </dl>
+  <p class="muted">Any other contract using this name is not official.</p>
+</section>
+
+<section class="card" id="live" data-ca="{{ coin.contractAddress }}">
+  <h2>Live market data</h2>
+  <p class="muted" id="live-status">Loading from DexScreener…</p>
+  <dl class="facts" id="live-data" hidden>
+    <dt>Market cap</dt><dd id="mc"></dd>
+    <dt>Liquidity</dt><dd id="liq"></dd>
+    <dt>Volume 24h</dt><dd id="vol"></dd>
+  </dl>
+  <p class="muted">Shown for transparency only. The agent never comments on price.</p>
+</section>
+<script src="{{ '/assets/live.js' | url }}" defer></script>
+{% else %}
+<section class="card">
+  <h2>There is no official coin.</h2>
+  <p>If a coin is ever launched, it will be announced here first and on the character's own accounts. <strong>Any coin using this name today is not ours.</strong></p>
+</section>
+{% endif %}
+
+<section>
+  <h2>Disclosure</h2>
+  <p>The people behind this project may hold this coin and receive creator fees on every trade. The agent that runs the character never moves, buys or sells any asset.</p>
+</section>
+
+<section class="card risk" id="risk">
+  <h2>Risk notice</h2>
+  <p>This coin is a meme coin created for entertainment. It has no intrinsic value, no utility, no team obligations and no promise of profit. Its price can go to zero. Do not buy what you cannot afford to lose. Nothing here is financial advice. The people behind this project may hold this coin and receive creator fees on every trade.</p>
+</section>

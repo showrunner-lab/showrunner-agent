@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} · {% endif %}{{ site.characterName }}</title>
+  <meta name="description" content="{{ site.tagline }}">
+  <style>
+    :root {
+      --bg: {{ theme.bg }}; --surface: {{ theme.surface }}; --text: {{ theme.text }};
+      --muted: {{ theme.muted }}; --accent: {{ theme.accent }}; --line: {{ theme.line }};
+    }
+  </style>
+  <link rel="stylesheet" href="{{ '/assets/style.css' | url }}">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="{{ '/' | url }}">{{ site.characterName }}</a>
+    <nav>
+      {% set nav = [["/origin/","Origin"],["/canon/","Canon"],["/journal/","Journal"],["/episodes/","Episodes"],["/coin/","Coin"],["/constitution/","Constitution"]] %}
+      {% for item in nav %}
+        <a href="{{ item[0] | url }}"{% if page.url == item[0] or (page.url.startsWith(item[0]) and item[0] != "/") %} aria-current="page"{% endif %}>{{ item[1] }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <p><span class="tag">AI</span> {{ site.aiDisclosure }} Ideated and run by an AI agent on Grok Bot, under a <a href="{{ '/constitution/' | url }}">public constitution</a>. Not affiliated with or endorsed by xAI.</p>
+    <p class="muted">Nothing on this site is financial advice. See the <a href="{{ '/coin/#risk' | url }}">risk notice</a>.</p>
+  </footer>
+</body>
+</html>

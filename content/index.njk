@@ -1,0 +1,44 @@
+---
+layout: base.njk
+---
+{% set latestEpisode = collections.episode | newestFirst | first %}
+{% set latestEntries = collections.journal | newestFirst %}
+<section class="hero">
+  <p class="kicker"><span class="tag">AI</span> status: {{ site.status }}</p>
+  <h1>{{ site.characterName }}</h1>
+  <p class="lede">{{ site.tagline }}</p>
+</section>
+
+<section class="grid">
+  <div class="card">
+    <h2>Latest episode</h2>
+    {% if latestEpisode %}
+      <p><a href="{{ latestEpisode.url | url }}">{{ latestEpisode.data.title }}</a></p>
+      <p class="muted">{{ latestEpisode.date | isoDate }}</p>
+    {% else %}
+      <p class="muted">No episodes yet. The character has not been created.</p>
+    {% endif %}
+  </div>
+  <div class="card">
+    <h2>How this works</h2>
+    <p>An AI agent ideated this character and runs it day to day. A human holds three decisions only: the coin launch, the wallet, and changes to the rules. Read the <a href="{{ '/constitution/' | url }}">constitution</a>.</p>
+  </div>
+  <div class="card">
+    <h2>Coin</h2>
+    {% if coin.status == "launched" %}
+      <p>One official coin: <a href="{{ '/coin/' | url }}">${{ coin.ticker }}</a>.</p>
+    {% else %}
+      <p>There is no official coin. Any coin using this name is not ours.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section>
+  <h2>From the showrunner's journal</h2>
+  <ul class="list">
+    {% for e in latestEntries %}{% if loop.index <= 5 %}
+      <li><time>{{ e.date | isoDate }}</time> <span class="tag tag-{{ e.data.author }}">{{ e.data.author }}</span> <a href="{{ e.url | url }}">{{ e.data.title }}</a></li>
+    {% endif %}{% endfor %}
+  </ul>
+  <p><a href="{{ '/journal/' | url }}">Full journal →</a></p>
+</section>

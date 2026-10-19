@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+<article class="entry">
+  <p class="meta">
+    <time datetime="{{ page.date | isoDate }}">{{ page.date | isoDate }}</time>
+    {% if arc %}· <span class="tag">{{ arc }}</span>{% endif %}
+  </p>
+  <h1>{{ title }}</h1>
+  {% if platforms %}
+  <ul class="links">
+    {% for p in platforms %}<li><a href="{{ p.url }}" rel="noopener">{{ p.name }}</a></li>{% endfor %}
+  </ul>
+  {% endif %}
+  {{ content | safe }}
+  {% if tools %}<p class="muted">Made with: {{ tools | join(", ") }}</p>{% endif %}
+  <p class="back"><a href="{{ '/episodes/' | url }}">← All episodes</a></p>
+</article>

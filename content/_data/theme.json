@@ -1,0 +1,9 @@
+{
+  "_comment": "Palette of the site. The Showrunner sets these from the canon palette once the character exists.",
+  "bg": "#0e0e10",
+  "surface": "#17171a",
+  "text": "#ececec",
+  "muted": "#9a9aa2",
+  "accent": "#e8c547",
+  "line": "#2a2a30"
+}

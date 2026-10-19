@@ -1,0 +1,5 @@
+{
+  "tags": "episode",
+  "layout": "episode.njk",
+  "permalink": "/episodes/{{ page.date | isoDate }}-{{ page.fileSlug }}/"
+}
